@@ -56,8 +56,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         Item item = items.get(position);
         if(item != null)
         {
-            holder.tvPicTitle.setText(item.getTitle());
-            holder.tvPicAuthor.setText(item.getAuthor());
+            holder.tvPicTitle.setText("Title:\n"+item.getTitle());
+            holder.tvPicAuthor.setText("Author:\n"+item.getAuthor());
             Glide.with(context).load(item.getMedia().getM()).into(holder.ivPic);
         }
     }
