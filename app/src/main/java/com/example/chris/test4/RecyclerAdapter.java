@@ -1,5 +1,6 @@
 package com.example.chris.test4;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.DialogFragment;
 import android.app.PendingIntent;
@@ -95,14 +96,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                             switch (which)
                             {
                                 case 0:
-                                     Intent intent = new Intent(v.getContext(), FullImageActivity.class);
-                                     intent.putExtra("pic", picture);
-                                     v.getContext().startActivity(intent);
-                                     break;
+                                {
+                                    Intent intent = new Intent(v.getContext(), FullImageActivity.class);
+                                    intent.putExtra("pic", picture);
+                                    v.getContext().startActivity(intent);
+                                    break;
+                                }
                                 case 1:
+                                {
                                     fragment = MyDialogFragment.newInstance(1, picture);
                                     fragment.show(ft, "dialog");
                                     break;
+                                }
                             }
                             dialog.dismiss();
                         }

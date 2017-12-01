@@ -81,6 +81,6 @@ public class MyDialogFragment extends DialogFragment
         super.onViewCreated(view, savedInstanceState);
         image = view.findViewById(R.id.ivImageDialog);
     
-        Glide.with(view.getContext()).load(picture).into(image);
+        new PicAsync(image).execute(picture);
     }
 }
