@@ -73,7 +73,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private final TextView tvPicTitle;
         private final TextView tvPicAuthor;
         private final ImageView ivPic;
-        public ViewHolder(View itemView)
+        public ViewHolder(final View itemView)
         {
             super(itemView);
             tvPicTitle = itemView.findViewById(R.id.tvPicTitle);
@@ -104,8 +104,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                                 }
                                 case 1:
                                 {
-                                    fragment = MyDialogFragment.newInstance(1, picture);
-                                    fragment.show(ft, "dialog");
+//                                    fragment = MyDialogFragment.newInstance(1, picture);
+//                                    fragment.show(ft, "dialog");
+                                    
+                                    ImageView imageView = new ImageView(itemView.getContext());
+                                    new PicAsync(imageView).execute(picture);
+    
+                                    AlertDialog.Builder builder =
+                                            new AlertDialog.Builder(itemView.getContext())
+                                                    .setView(imageView);
+                                    builder.create().show();
                                     break;
                                 }
                             }
